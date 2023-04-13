@@ -7,6 +7,11 @@ import java.util.List;
 
 public class Employee {
 
+	private static final int GRADE_1_SALARY = 3000000;
+    private static final int GRADE_2_SALARY = 5000000;
+    private static final int GRADE_3_SALARY = 7000000;
+    private static final double FOREIGNER_SALARY = 1.5;
+
 	private String employeeId;
 	private String firstName;
 	private String lastName;
@@ -53,22 +58,22 @@ public class Employee {
 	 */
 	
 	public void setMonthlySalary(int grade) {	
-		if (grade == 1) {
-			monthlySalary = 3000000;
-			if (isForeigner) {
-				monthlySalary = (int) (3000000 * 1.5);
-			}
-		}else if (grade == 2) {
-			monthlySalary = 5000000;
-			if (isForeigner) {
-				monthlySalary = (int) (3000000 * 1.5);
-			}
-		}else if (grade == 3) {
-			monthlySalary = 7000000;
-			if (isForeigner) {
-				monthlySalary = (int) (3000000 * 1.5);
-			}
-		}
+        switch (grade) {
+            case 1:
+                monthlySalary = GRADE_1_SALARY;
+                break;
+            case 2:
+                monthlySalary = GRADE_2_SALARY;
+                break;
+            case 3:
+                monthlySalary = GRADE_3_SALARY;
+                break;
+            default:
+                monthlySalary = 0;
+        }
+        if (isForeigner) {
+            monthlySalary *= FOREIGNER_SALARY;
+        }
 	}
 	
 	public void setAnnualDeductible(int deductible) {	
